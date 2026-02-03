@@ -66,7 +66,7 @@ export const getUserProfileByIdRepository = async (id, db) => {
 
 export const getDetailUserByIdRepository = async (id, db) => {
     const query = {
-        text: `SELECT fullname, semester, theme, avatar_initial, major, notif_deadline, notif_schedule FROM users WHERE id = $1`,
+        text: `SELECT fullname, semester, theme, avatar_initial, major, notif_deadline, notif_schedule, auth_provider FROM users WHERE id = $1`,
         values: [id]
     }
 
@@ -78,7 +78,8 @@ export const getDetailUserByIdRepository = async (id, db) => {
         semester: row.semester,
         theme: row.theme,
         notifDeadline: row.notif_deadline,
-        notifSchedule: row.notif_schedule
+        notifSchedule: row.notif_schedule,
+        authProvider: row.auth_provider
     }))[0]
 }
 
